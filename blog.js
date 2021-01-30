@@ -553,20 +553,20 @@ var dataJson = {
     ]
 }
 
-// $('#table3').DataTable({
-//     data: dataJson.users,
-//     columns: [
-//         { "data ": 'id' },
-//         { "data ": 'name' },
-//         { "data ": 'position' },
-//         { "data ": 'salary' },
-//         { "data ": 'start_date' },
-//         { "data ": 'office' },
-//         { "data ": 'extn' },
-//         {
-//             "render ": function() {
-//                 return '<button type="button " class="btn btn-danger delete ">Xóa</button>'
-//             }
-//         }
-//     ]
-// });
+$('#table3').DataTable({
+    data: dataJson.users,
+    columns: [
+        { "data ": 'id' },
+        { "data ": 'name' },
+        { "data ": 'position' },
+        { "data ": 'salary' },
+        { "data ": 'start_date' },
+        { "data ": 'office' },
+        { "data ": 'extn' },
+        {
+            "render ": function() {
+                return '<button type="button " class="btn btn-danger delete ">Xóa</button>'
+            }
+        }
+    ]
+});
