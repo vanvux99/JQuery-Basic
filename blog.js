@@ -553,33 +553,94 @@ var dataJson = {
     ]
 }
 
-$('#table3').DataTable({
-    "processing": true,
-    data: dataJson.users,
-    columns: [
-        { data: 'id' },
-        { data: 'name' },
-        { data: 'position' },
-        { data: 'salary' },
-        { data: 'start_date' },
-        { data: 'office' },
-        { data: 'extn' },
-        {
-            "render ": function() {
-                return '<button type="button " class="btn btn-danger delete ">Xóa</button>'
-            }
-        }
-    ]
+$(document).ready(function() {
+    table = $('#table3').DataTable({
+        columnDefs: [{
+                targets: [3, 6],
+                type: "dom-text",
+                render: function(data, type, row, meta) {
+                    return "<input type='text' value='" + data + "' class='form-control'>";
+                }
+            },
+            {
+                targets: [1],
+                type: "dom-text",
+                render: function(data) {
+                    return "<th>" + data + "</th>";
+                }
+            },
+            {
+                targets: [0],
+                type: "dom-text",
+                render: function(data) {
+                    return "<th>" + data + "</th>";
+                }
+            },
+            {
+                targets: [2],
+                render: function(data) {
+                    return position(data);
+                }
+            },
+            {
+                targets: [5],
+                render: function(data) {
+                    return office(data);
+                }
+            },
+            {
+                targets: [4],
+                type: "dom-text",
+                render: function(data) {
+                    return "<input type='date' value='" + data + "' class='form-control'>";
+                }
+            },
+            {
+                targets: [7],
+                type: "dom-text",
+                render: function(data) {
+                    return "<input type='button' value='Delete' id='btn_delete' class='btn btn-danger' onClick='deleteFunction()'/>";
+                }
+            },
+        ],
+        paging: false,
+        "data": dataJson.users,
+        "columns": [
+            { "data": "id" },
+            { "data": "name" },
+            { "data": "position" },
+            { "data": "salary" },
+            { "data": "start_date" },
+            { "data": "office" },
+            { "data": "extn" },
+            { "data": "null" }
+        ]
+    });
 });
 
-$(document).abc(function() {
-    alert("hi");
-    $("#list-header").on({
-        mouseenter: function() {
-            $(this).css("background-color", "lightgray");
-        },
-        mouseenter: function() {
-            $(this).css("background-color", "lightblue");
-        }
-    })
-})
+
+// $('#table3').DataTable({
+//     "processing": true,
+//     data: dataJson.users,
+//     "columns": [
+//         { "data": 'id' },
+//         { "data": 'name' },
+//         { "data": 'position' },
+//         { "data": 'salary' },
+//         { "data": 'start_date' },
+//         { "data": 'office' },
+//         { "data": 'extn' }
+//     ]
+// });
+
+// $(document).abc(function() {
+//     alert("hi");
+//     $("#list-header").on({
+//         mouseenter: function() {
+//             $(this).css("background-color", "lightgray");
+//         },
+//         mouseenter: function() {
+//             $(this).css("background-color", "lightblue");
+//         }
+//     })
+// })
