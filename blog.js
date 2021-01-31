@@ -555,6 +555,7 @@ var dataJson = {
 
 $(document).ready(function() {
     table = $('#table3').DataTable({
+        "processing": true,
         columnDefs: [{
                 targets: [3, 6],
                 type: "dom-text",
@@ -619,6 +620,34 @@ $(document).ready(function() {
 });
 
 
+function position(data) {
+    return "<select class='form-control' id='exampleFormControlSelect1'> <option> " + positionName(data) + " </option> </select>"
+}
+
+function office(data) {
+    return "<select class='form-control' id='exampleFormControlSelect1'> <option> " + officeName(data) + " </option> </select>"
+}
+
+function positionName(data) {
+    let array = dataJson.positions
+
+    for (let indexPosition = 0; indexPosition < array.length; indexPosition++) {
+        if (array[indexPosition].id === data) {
+            return array[indexPosition].name
+        }
+    }
+}
+
+function officeName(data) {
+    let array = dataJson.offices
+
+    for (let indexOfice = 0; indexOfice < array.length; indexOfice++) {
+        if (array[indexOfice].id === data) {
+            return array[indexOfice].name
+        }
+    }
+}
+
 // $('#table3').DataTable({
 //     "processing": true,
 //     data: dataJson.users,
@@ -633,14 +662,16 @@ $(document).ready(function() {
 //     ]
 // });
 
-// $(document).abc(function() {
-//     alert("hi");
-//     $("#list-header").on({
-//         mouseenter: function() {
-//             $(this).css("background-color", "lightgray");
-//         },
-//         mouseenter: function() {
-//             $(this).css("background-color", "lightblue");
-//         }
-//     })
-// })
+$(document).ready(function() {
+    var table = $('#table3').DataTable();
+
+    $('#table3 tbody').on('click', 'tr', function() {
+        var data = table.row(this).data();
+        alert("" + data[0] + "")
+        alert('You clicked on ' + data[0] + '\'s row');
+    });
+});
+
+function setDetailInfomation(params) {
+
+}
