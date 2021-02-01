@@ -553,6 +553,7 @@ var dataJson = {
     ]
 }
 
+var table = $('#table3');
 $(document).ready(function() {
     table = $('#table3').DataTable({
         columnDefs: [{
@@ -616,6 +617,17 @@ $(document).ready(function() {
             { "data": "null" }
         ]
     });
+
+    // event click row show detail data
+    $('#table3').on('click', 'tr', function() {
+        var data = table.row($(this)).data();
+        $('#text-detail-1').val(data.name);
+        $('#text-detail-2').val(data.position);
+        $('#text-detail-3').val(data.salary);
+        $('#text-detail-4').val(data.start_date);
+        $('#text-detail-5').val(data.office);
+        $('#text-detail-6').val(data.extn);
+    })
 });
 
 
@@ -651,53 +663,23 @@ function officeName(data) {
     }
 }
 
-var txt1 = $("#text-detail-1")
-var txt2 = $('#text-detail-2')
-var txt3 = $('#text-detail-3')
-var txt4 = $('#text-detail-4')
-var txt5 = $('#text-detail-5')
-var txt6 = $('#text-detail-6')
-
-// event click row show detail data
-$(document).ready(function() {
-    var table = $('#table3').DataTable();
-
-    $('#table3 tbody').on('click', 'tbody tr', function() {
-        var data = table.row($(this)).data();
-
-        txt1.val(data["name"])
-        txt2.val(data["position"])
-        txt3.val(data["salary"])
-        txt4.val(data["start_date"])
-        txt5.val(data["office"])
-        txt6.val(data["extn"])
-    })
-})
-
 // event searchClick
 function searchClick() {
     let array = dataJson.users
-    let id = $("text-2")
-    let name = $("text-1")
+    let id = $("#text-2")
+    let name = $("#text-3")
+        //console.log(id.val() + ", " + name.val());
 
     if (name.val() != null && id.val() != null) {
         for (let index = 0; index < array.length; index++) {
-            if (array[index]["name"] === name.val() && array[index]["id"] === id.val()) {
-                $(document).ready(function() {
-                    table = $('#table3').DataTable({
-                        "data": array[index],
-                        "columns": [
-                            { "data": "id" },
-                            { "data": "name" },
-                            { "data": "position" },
-                            { "data": "salary" },
-                            { "data": "start_date" },
-                            { "data": "office" },
-                            { "data": "extn" },
-                            { "data": "null" }
-                        ]
-                    });
-                });
+            if (array[index]["name"] == name.val() && array[index]["id"] == id.val()) {
+                alert(array[index]["name"]);
+                $('#text-detail-1').val(array[index]["name"]);
+                $('#text-detail-2').val(array[index]["position"]);
+                $('#text-detail-3').val(array[index]["salary"]);
+                $('#text-detail-4').val(array[index]["start_date"]);
+                $('#text-detail-5').val(array[index]["office"]);
+                $('#text-detail-6').val(array[index]["extn"]);
             }
         }
     }
@@ -705,19 +687,7 @@ function searchClick() {
 
 // event clearClick
 function clearClick() {
-
-    txt1.val("")
-    txt2.val("")
-    txt3.val("")
-    txt4.val("")
-    txt5.val("")
-    txt6.val("")
-        // document.getElementById("text-detail-1").value = ""
-        // document.getElementById("text-detail-2").value = ""
-        // document.getElementById("text-detail-3").value = ""
-        // document.getElementById("text-detail-4").value = ""
-        // document.getElementById("text-detail-5").value = ""
-        // document.getElementById("text-detail-6").value = ""
+    location.reload()
 }
 
 // event saveClick
@@ -730,10 +700,8 @@ function saveClick() {
         console.log("office: " + txt5.val());
         console.log("extn: " + txt6.val());
     }
-    // console.log("name: " + document.getElementById("text-detail-1").value);
-    // console.log("position: " + document.getElementById("text-detail-2").value);
-    // console.log("salary: " + document.getElementById("text-detail-3").value);
-    // console.log("start_date: " + document.getElementById("text-detail-4").value);
-    // console.log("office: " + document.getElementById("text-detail-5").value);
-    // console.log("extn: " + document.getElementById("text-detail-6").value);
+}
+
+function deleteFunction() {
+    $('#btn_delete').closest("tr").remove();
 }

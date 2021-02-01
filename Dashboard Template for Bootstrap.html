@@ -5,7 +5,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <!-- đoạn này thêm datatable từ trên mạng-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.23/datatables.css" />
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.23/datatables.js"></script>
@@ -13,11 +12,8 @@
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 
-
-    <!-- lấy file blog.js từ bên ngoài-->
     <script type="text/javascript" src="./blog.js"></script>
 
-    <!-- từ đoạn này đổ đi là template họ cho sẵn -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -27,10 +23,8 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
-    <!-- Bootstrap core CSS -->
     <link href="./Dashboard Template for Bootstrap_files/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
     <link href="./Dashboard Template for Bootstrap_files/dashboard.css" rel="stylesheet">
     <style type="text/css">
         /* Chart.js */
@@ -218,12 +212,10 @@
             color: #1296ba !important;
         }
     </style>
-
-    <!--đoạn này style của template-->
 </head>
 
 <body data-new-gr-c-s-check-loaded="14.993.0" data-gr-ext-installed="">
-    <!-- đoạn này là header-->
+    <!--header-->
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
         <img src="https://digidinos.com/assets/images/logo.png" id="img-logo">
         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="https://getbootstrap.com/docs/4.0/examples/dashboard/#">Jquery tutorial</a>
@@ -238,7 +230,7 @@
     <div class="container-fluid">
         <div class="row">
 
-            <!-- Đóng từ đoạn này , đoạn này là template bên trái-->
+            <!-- template bên trái-->
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
@@ -299,10 +291,10 @@
                     </ul>
                 </div>
             </nav>
-            <!-- Đóng đến đoạn này -->
 
             <main role="main " class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 ">
-                <!--đoạn này là search-->
+
+                <!-- search-->
                 <div class="card">
                     <div class="card-header">
                         <h1 class="h2 ">Search</h1>
@@ -316,7 +308,7 @@
                                 </div>
                                 <div class="input-group-prepend " id="text-1">
                                     <span class="input-group-text " id="inputGroup-sizing-default ">Name</span>
-                                    <input type="text " id="text-2" class="form-control " aria-label="Default " aria-describedby="inputGroup-sizing-default ">
+                                    <input type="text " id="text-3" class="form-control " aria-label="Default " aria-describedby="inputGroup-sizing-default ">
                                 </div>
                             </div>
                         </div>
@@ -324,7 +316,7 @@
                     </div>
                 </div>
 
-                <!--đoạn này là detail-->
+                <!-- detail-->
                 <div class="card">
                     <div class="card-header">
                         <h1 class="h2 ">Detail</h1>
@@ -365,7 +357,7 @@
                     </div>
                 </div>
 
-                <!--đoạn này là datatable-->
+                <!-- datatable-->
                 <div class="card">
                     <div class="card-header">
                         <h2>Table</h2>
@@ -389,23 +381,22 @@
                 </div>
             </main>
         </div>
-        </main>
-        <footer>
-            <button class="box">F1</button>
-            <button class="box">F2</button>
-            <button class="box" onclick="searchClick()">F3<br/>Search</button>
-            <button class="box">F4</button>
-            <button class="box" onclick="clearClick()">F5<br/>Clear</button>
-            <button class="box">F6</button>
-            <button class="box">F7</button>
-            <button class="box">F8</button>
-            <button class="box">F9</button>
-            <button class="box" onclick="saveClick()">F10<br/>Save</button>
-            <button class="box">F11</button>
-            <button class="box">F12</button>
-        </footer>
     </div>
-    </div>
+    <footer>
+        <button class="box">F1</button>
+        <button class="box">F2</button>
+        <button class="box" onclick="searchClick()">F3<br/>Search</button>
+        <button class="box">F4</button>
+        <button class="box" onclick="clearClick()">F5<br/>Clear</button>
+        <button class="box">F6</button>
+        <button class="box">F7</button>
+        <button class="box">F8</button>
+        <button class="box">F9</button>
+        <button class="box" onclick="saveClick()">F10<br/>Save</button>
+        <button class="box">F11</button>
+        <button class="box">F12</button>
+    </footer>
+
 
 </body>
 
