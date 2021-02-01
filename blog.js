@@ -555,7 +555,6 @@ var dataJson = {
 
 $(document).ready(function() {
     table = $('#table3').DataTable({
-        "processing": true,
         columnDefs: [{
                 targets: [3, 6],
                 type: "dom-text",
@@ -620,14 +619,17 @@ $(document).ready(function() {
 });
 
 
+// return view dropdown position
 function position(data) {
     return "<select class='form-control' id='exampleFormControlSelect1'> <option> " + positionName(data) + " </option> </select>"
 }
 
+// return view dropdown office
 function office(data) {
     return "<select class='form-control' id='exampleFormControlSelect1'> <option> " + officeName(data) + " </option> </select>"
 }
 
+// function position used
 function positionName(data) {
     let array = dataJson.positions
 
@@ -638,6 +640,7 @@ function positionName(data) {
     }
 }
 
+// function office used
 function officeName(data) {
     let array = dataJson.offices
 
@@ -648,30 +651,89 @@ function officeName(data) {
     }
 }
 
-// $('#table3').DataTable({
-//     "processing": true,
-//     data: dataJson.users,
-//     "columns": [
-//         { "data": 'id' },
-//         { "data": 'name' },
-//         { "data": 'position' },
-//         { "data": 'salary' },
-//         { "data": 'start_date' },
-//         { "data": 'office' },
-//         { "data": 'extn' }
-//     ]
-// });
+var txt1 = $("#text-detail-1")
+var txt2 = $('#text-detail-2')
+var txt3 = $('#text-detail-3')
+var txt4 = $('#text-detail-4')
+var txt5 = $('#text-detail-5')
+var txt6 = $('#text-detail-6')
 
+// event click row show detail data
 $(document).ready(function() {
     var table = $('#table3').DataTable();
 
-    $('#table3 tbody').on('click', 'tr', function() {
-        var data = table.row(this).data();
-        alert("" + data[0] + "")
-        alert('You clicked on ' + data[0] + '\'s row');
-    });
-});
+    $('#table3 tbody').on('click', 'tbody tr', function() {
+        var data = table.row($(this)).data();
 
-function setDetailInfomation(params) {
+        txt1.val(data["name"])
+        txt2.val(data["position"])
+        txt3.val(data["salary"])
+        txt4.val(data["start_date"])
+        txt5.val(data["office"])
+        txt6.val(data["extn"])
+    })
+})
 
+// event searchClick
+function searchClick() {
+    let array = dataJson.users
+    let id = $("text-2")
+    let name = $("text-1")
+
+    if (name.val() != null && id.val() != null) {
+        for (let index = 0; index < array.length; index++) {
+            if (array[index]["name"] === name.val() && array[index]["id"] === id.val()) {
+                $(document).ready(function() {
+                    table = $('#table3').DataTable({
+                        "data": array[index],
+                        "columns": [
+                            { "data": "id" },
+                            { "data": "name" },
+                            { "data": "position" },
+                            { "data": "salary" },
+                            { "data": "start_date" },
+                            { "data": "office" },
+                            { "data": "extn" },
+                            { "data": "null" }
+                        ]
+                    });
+                });
+            }
+        }
+    }
+}
+
+// event clearClick
+function clearClick() {
+
+    txt1.val("")
+    txt2.val("")
+    txt3.val("")
+    txt4.val("")
+    txt5.val("")
+    txt6.val("")
+        // document.getElementById("text-detail-1").value = ""
+        // document.getElementById("text-detail-2").value = ""
+        // document.getElementById("text-detail-3").value = ""
+        // document.getElementById("text-detail-4").value = ""
+        // document.getElementById("text-detail-5").value = ""
+        // document.getElementById("text-detail-6").value = ""
+}
+
+// event saveClick
+function saveClick() {
+    if (txt1.val() != null) {
+        console.log("name: " + txt1.val());
+        console.log("position: " + txt2.val());
+        console.log("salary: " + txt3.val());
+        console.log("start_date: " + txt4.val());
+        console.log("office: " + txt5.val());
+        console.log("extn: " + txt6.val());
+    }
+    // console.log("name: " + document.getElementById("text-detail-1").value);
+    // console.log("position: " + document.getElementById("text-detail-2").value);
+    // console.log("salary: " + document.getElementById("text-detail-3").value);
+    // console.log("start_date: " + document.getElementById("text-detail-4").value);
+    // console.log("office: " + document.getElementById("text-detail-5").value);
+    // console.log("extn: " + document.getElementById("text-detail-6").value);
 }

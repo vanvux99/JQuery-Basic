@@ -231,3 +231,18 @@ div#table3_filter {
 tr:focus {
     background-color: #329ce5;
 }
+
+#img-logo {
+    height: 50px;
+}
+
+footer {
+    width: 100%;
+    min-height: 8vh;
+    background-color: #342c75;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
